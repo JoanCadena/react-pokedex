@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PokeItem from "./PokeItem";
+import PokeItem from "../components/PokeItem";
 
 const PokeDex = () => {
   const [listPokemons, setListPokemons] = useState([]);
@@ -34,13 +34,13 @@ const PokeDex = () => {
   return (
     <div>
       <div>
-        {listPokemons.map((pokemonStats, index) => (
+        {listPokemons.map((pokemonInfo, index) => (
           <PokeItem
             key={index}
-            id={pokemonStats.id}
-            image={pokemonStats.sprites.other.dream_world.front_default}
-            name={pokemonStats.name}
-            type={pokemonStats.types.map((type) => {
+            id={pokemonInfo.id}
+            image={pokemonInfo.sprites.other.dream_world.front_default}
+            name={pokemonInfo.name}
+            type={pokemonInfo.types.map((type) => {
               return type.type.name;
             })}
           />
