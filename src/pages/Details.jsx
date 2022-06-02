@@ -1,4 +1,4 @@
-import { useParams, Route } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PokeInfo from "../components/PokeInfo";
 
@@ -24,6 +24,7 @@ const PokeDetails = () => {
 
   return (
     <>
+      <Link to="/pokedex">Volver</Link>
       {pokemon.map((pokemonInfo, index) => (
         <PokeInfo
           key={index}
