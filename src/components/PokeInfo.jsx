@@ -3,16 +3,9 @@ const PokeInfo = (props) => {
     <>
       <div>
         <span>{props.name} </span>
-        {props.id < 10 ? (
-          <small>N.°00{props.id}</small>
-        ) : (
-          <small>N.°0{props.id}</small>
-        )}
+        {props.id < 10 ? <small>N.°00{props.id}</small> : <small>N.°0{props.id}</small>}
       </div>
-      <img
-        src={props.image}
-        alt={props.name}
-      />
+      <img src={props.image} alt={props.name} />
       <div>
         <div>
           <h4>Height</h4>
@@ -53,7 +46,7 @@ const PokeInfo = (props) => {
           {props.stats.map((auxStat) => {
             return (
               <section key={Math.random()}>
-                <h5>{auxStat.stat.name_stat}</h5>
+                <h5>{auxStat.stat.name}</h5>
                 <small>{auxStat.base_stat}</small>
               </section>
             );

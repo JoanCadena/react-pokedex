@@ -1,5 +1,6 @@
 import { Route, Switch, Redirect, NavLink } from "react-router-dom";
 import PokeDex from "./pages/Pokedex";
+import MyList from "./pages/MyList";
 import PokeDetails from "./pages/Details";
 import NotFound from "./pages/NotFound";
 
@@ -13,7 +14,13 @@ const App = () => {
         <PokeDex />
       </Route>
       <Route path="/pokedex/:pokeId">
-        <PokeDetails />
+        <PokeDetails page="/pokedex" />
+      </Route>
+      <Route path="/mylist" exact>
+        <MyList />
+      </Route>
+      <Route path="/mylist/:pokeId">
+        <PokeDetails page="/mylist" />
       </Route>
       <Route path="*">
         <NotFound />

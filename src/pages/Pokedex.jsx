@@ -36,13 +36,13 @@ const PokeDex = () => {
       <div>
         {listPokemons.map((pokemonInfo, index) => (
           <PokeItem
+            {...pokemonInfo}
             key={index}
-            id={pokemonInfo.id}
             image={pokemonInfo.sprites.other.dream_world.front_default}
-            name={pokemonInfo.name}
             type={pokemonInfo.types.map((type) => {
               return type.type.name;
             })}
+            page="pokedex"
           />
         ))}
       </div>

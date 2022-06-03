@@ -2,45 +2,57 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PokeInfo from "../components/PokeInfo";
 
-const PokeDetails = () => {
+const Details = (props) => {
   const params = useParams();
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState();
   const url = `https://pokeapi.co/api/v2/pokemon/${params.pokeId}`;
 
   const getPokemon = async () => {
     const res = await fetch(url);
     const data = await res.json();
 
-    const createPokemonObject = () => {
-      setPokemon((currentList) => [...currentList, data]);
-    };
+    setPokemon(data);
+  };
 
-    createPokemonObject();
+  const savePokemon = (info) => {
+    const pokemonInfo = JSON.stringify(info);
+    localStorage.setItem(info.id, pokemonInfo);
+  };
+
+  const deletePokemon = (info) => {
+    localStorage.removeItem(info.id);
   };
 
   useEffect(() => {
     getPokemon();
   }, []);
 
-  return (
-    <>
-      <Link to="/pokedex">Volver</Link>
-      {pokemon.map((pokemonInfo, index) => (
+  if (pokemon) {
+    return (
+      <>
+        {props.page == "/mylist" ? (
+          <input
+            type="button"
+            value="Eliminar en mi lista"
+            onClick={() => deletePokemon(pokemon)}
+          />
+        ) : (
+          <input
+            type="button"
+            value="Guardar en mi lista"
+            onClick={() => savePokemon(pokemon)}
+          />
+        )}
+        <Link to={props.page}>Volver</Link>
         <PokeInfo
-          key={index}
-          name={pokemonInfo.name}
-          id={pokemonInfo.id}
-          image={pokemonInfo.sprites.other.dream_world.front_default}
-          height={pokemonInfo.height}
-          weight={pokemonInfo.weight}
-          base_experience={pokemonInfo.base_experience}
-          types={pokemonInfo.types}
-          abilities={pokemonInfo.abilities}
-          stats={pokemonInfo.stats}
+          {...pokemon}
+          key={Math.random}
+          image={pokemon.sprites.other.dream_world.front_default}
         />
-      ))}
-    </>
-  );
+      </>
+    );
+  }
+  return <h3>Loading...</h3>;
 };
 
-export default PokeDetails;
+export default Details;
