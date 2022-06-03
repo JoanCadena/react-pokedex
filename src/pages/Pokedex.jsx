@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
 
 const PokeDex = () => {
   const [listPokemons, setListPokemons] = useState([]);
+  const [search, setSearch] = useState("/pokedex/");
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=20"
   );
+
+  const onChangeHandler = (data) => {
+    setSearch("/pokedex/" + data.target.value);
+  };
 
   const getListPokemons = async () => {
     const res = await fetch(loadMore);
@@ -33,6 +39,10 @@ const PokeDex = () => {
 
   return (
     <div>
+      <input id="name" placeholder="Pokemon name" onChange={onChangeHandler}/>
+      <Link to={search}>
+        <input type="button" value="Search" />
+      </Link>
       <div>
         {listPokemons.map((pokemonInfo, index) => (
           <PokeItem

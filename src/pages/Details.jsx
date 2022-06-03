@@ -17,10 +17,12 @@ const Details = (props) => {
   const savePokemon = (info) => {
     const pokemonInfo = JSON.stringify(info);
     localStorage.setItem(info.id, pokemonInfo);
+    alert(info.name + ' ha sido correctamente añadido a tu lista')
   };
 
   const deletePokemon = (info) => {
     localStorage.removeItem(info.id);
+    alert(info.name + ' se ha eliminado correctamente de tu lista')
   };
 
   useEffect(() => {
