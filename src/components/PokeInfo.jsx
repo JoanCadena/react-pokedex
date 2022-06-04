@@ -5,7 +5,7 @@ const PokeInfo = (props) => {
         <span>{props.name} </span>
         {props.id < 10 ? <small>N.°00{props.id}</small> : <small>N.°0{props.id}</small>}
       </div>
-      <img src={props.image} alt={props.name} />
+      <img src={props.image ? props.image : 'https://www.pngmart.com/files/2/Pokeball-PNG-Pic.png'} alt={props.name} />
       <div>
         <div>
           <h4>Height</h4>

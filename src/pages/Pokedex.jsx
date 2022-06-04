@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
+import styles from '../css/PokeStyles.module.css'
 
 const PokeDex = () => {
   const [listPokemons, setListPokemons] = useState([]);
@@ -39,19 +40,19 @@ const PokeDex = () => {
 
   return (
     <div>
-      <div>
-        <h2>Search your pokemon</h2>
+      <div className={styles.cont_search}>
+        <h2 className={styles.search_title}>You're looking for a specific Pokemon? </h2>
         <input
           id="name"
           placeholder="Name or Number"
+          className={styles.search_input}
           onChange={onChangeHandler}
         />
         <Link to={search}>
-          <input type="button" value="let's go" />
+          <input className={styles.search_button} type="button" value="let's go"/>
         </Link>
-        <hr />
       </div>
-      <div>
+      <div className={styles.cont_list}>
         {listPokemons.map((pokemonInfo, index) => (
           <PokeItem
             {...pokemonInfo}
@@ -64,7 +65,9 @@ const PokeDex = () => {
           />
         ))}
       </div>
-      <button onClick={() => getListPokemons()}>Load more</button>
+      <div className={styles.cont_button}>
+        <button className={styles.button_load} onClick={() => getListPokemons()}>Load more</button>
+      </div>
     </div>
   );
 };

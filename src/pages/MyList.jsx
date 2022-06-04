@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
+import styles from '../css/PokeStyles.module.css'
 
 const MyList = () => {
   const [myListPokemons, setListPokemons] = useState([]);
@@ -12,6 +13,7 @@ const MyList = () => {
           return [JSON.parse(localStorage.getItem(key)), ...prevLits];
         });
       }
+      myListPokemons.sort((prev, nxt) => prev.id - nxt.id);
     }
   };
 
@@ -21,7 +23,7 @@ const MyList = () => {
 
   if (myListPokemons.length != 0) {
     return (
-        <div>
+        <div className={styles.cont_list}>
         {myListPokemons.map((pokemonInfo, index) => (
           <PokeItem
             {...pokemonInfo}
