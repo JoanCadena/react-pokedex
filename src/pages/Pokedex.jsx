@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
-import styles from '../css/PokeStyles.module.css'
+import styles from "../css/PokeStyles.module.css";
 
 const PokeDex = () => {
   const [listPokemons, setListPokemons] = useState([]);
@@ -41,7 +41,9 @@ const PokeDex = () => {
   return (
     <div>
       <div className={styles.cont_search}>
-        <h2 className={styles.search_title}>You're looking for a specific Pokemon? </h2>
+        <h2 className={styles.search_title}>
+          You're looking for a specific Pokemon?{" "}
+        </h2>
         <input
           id="name"
           placeholder="Name or Number"
@@ -49,7 +51,11 @@ const PokeDex = () => {
           onChange={onChangeHandler}
         />
         <Link to={search}>
-          <input className={styles.search_button} type="button" value="let's go"/>
+          <input
+            className={styles.search_button}
+            type="button"
+            value="let's go"
+          />
         </Link>
       </div>
       <div className={styles.cont_list}>
@@ -57,7 +63,11 @@ const PokeDex = () => {
           <PokeItem
             {...pokemonInfo}
             key={index}
-            image={pokemonInfo.sprites.other.dream_world.front_default}
+            image={
+              pokemonInfo.sprites.other.dream_world.front_default != null
+                ? pokemonInfo.sprites.other.dream_world.front_default
+                : pokemonInfo.sprites.front_default
+            }
             type={pokemonInfo.types.map((type) => {
               return type.type.name;
             })}
@@ -66,7 +76,12 @@ const PokeDex = () => {
         ))}
       </div>
       <div className={styles.cont_button}>
-        <button className={styles.button_load} onClick={() => getListPokemons()}>Load more</button>
+        <button
+          className={styles.button_load}
+          onClick={() => getListPokemons()}
+        >
+          Load more...
+        </button>
       </div>
     </div>
   );
