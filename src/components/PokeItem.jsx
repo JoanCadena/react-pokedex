@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const PokeItem = ({ id, image, name, type, page }) => {
   return (
-    <Link to={`/${page}/${id}`}>
+    <Link to={`/${page}/${id}`} style={{ textDecoration: 'none', color:"inherit" }}>
       <div key={id}>
         <img src={image} alt={name} />
         <div>{id < 10 ? <small>#00{id}</small> : <small>#0{id}</small>}</div>

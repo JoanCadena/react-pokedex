@@ -39,10 +39,18 @@ const PokeDex = () => {
 
   return (
     <div>
-      <input id="name" placeholder="Pokemon name" onChange={onChangeHandler}/>
-      <Link to={search}>
-        <input type="button" value="Search" />
-      </Link>
+      <div>
+        <h2>Search your pokemon</h2>
+        <input
+          id="name"
+          placeholder="Name or Number"
+          onChange={onChangeHandler}
+        />
+        <Link to={search}>
+          <input type="button" value="let's go" />
+        </Link>
+        <hr />
+      </div>
       <div>
         {listPokemons.map((pokemonInfo, index) => (
           <PokeItem
