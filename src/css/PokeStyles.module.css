@@ -247,3 +247,14 @@
   background-color: #27cb4f;
   margin: 10px;
 }
+
+.no_pokemons{
+  display: flex;
+  align-items: center;
+  background-color: lightskyblue;
+  border-radius: 30px;
+  margin: 20px 50px;
+  height: 140px;
+  flex-direction: column;
+  font-family: "Flexo-Demi", arial, sans-serif;
+}

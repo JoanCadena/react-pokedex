@@ -43,9 +43,11 @@ const MyList = () => {
     );
   }
   return (
-    <div>
-      <h1>Ningun pokemon encontrado</h1>
-      <Link to="/pokedex">Ver todos los Pokemones</Link>
+    <div className={styles.no_pokemons}>
+      <h1>No Pokemons found</h1>
+      <Link to="/pokedex">
+        <button className={styles.button_load}>See all Pokemons</button>
+      </Link>
     </div>
   );
 };
