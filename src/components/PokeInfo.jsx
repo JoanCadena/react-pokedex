@@ -1,60 +1,69 @@
+import styles from "../css/PokeStyles.module.css";
+import colors from "../css/Colors.module.css";
+
 const PokeInfo = (props) => {
   return (
     <>
-      <div>
-        <span>{props.name} </span>
-        {props.id < 10 ? (
-          <small>N.°00{props.id}</small>
-        ) : (
-          <small>N.°0{props.id}</small>
-        )}
+      <div className={styles.detail_name}>
+        <br />
+        <span>{props.name} N.° </span>
+        {props.id < 10 ? <span>00{props.id}</span> : <span>0{props.id}</span>}
       </div>
-      <img src={props.image} alt={props.name} />
-      <div>
-        <div>
-          <h4>Height</h4>
-          <>{props.height / 10}m</>
-        </div>
-        <div>
-          <h4>Weight</h4>
-          <>{props.weight / 10}Kg</>
-        </div>
-        <div>
-          <h4>Base Experience</h4>
-          {props.base_experience}
-        </div>
-        <div>
-          <h4>Types</h4>
-          {props.types.map((auxType) => {
-            return (
-              <div key={auxType.type.name}>
-                <small>{auxType.type.name}</small>
-                <br />
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          <h4>Abilities</h4>
-          {props.abilities.map((auxAbility) => {
-            return (
-              <div key={auxAbility.ability.name}>
-                <small>{auxAbility.ability.name}</small>
-                <br />
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          <h5>Stats</h5>
-          {props.stats.map((auxStat) => {
-            return (
-              <section key={Math.random()}>
-                <h5>{auxStat.stat.name}</h5>
-                <small>{auxStat.base_stat}</small>
-              </section>
-            );
-          })}
+      <div className={styles.cont_details}>
+        <img src={props.image} alt={props.name} className={styles.cont_image} />
+        <div className={styles.cont_detail_info}>
+          <div className={styles.cont_detail_base}>
+            <div>
+              <h2>Height</h2>
+              <>{props.height / 10}m</>
+            </div>
+            <div>
+              <h2>Weight</h2>
+              <>{props.weight / 10}Kg</>
+            </div>
+            <div>
+              <h2>Base Experience</h2>
+              <>{props.base_experience}</>
+            </div>
+          </div>
+          <h2>Types</h2>
+          <div className={styles.cont_detail_items}>
+            {props.types.map((auxType) => {
+              return (
+                <div
+                  key={auxType.type.name}
+                  className={
+                    styles.cont_types + " " + colors[auxType.type.name]
+                  }
+                >
+                  <span>{auxType.type.name}</span>
+                  <br />
+                </div>
+              );
+            })}
+          </div>
+          <h2>Abilities</h2>
+          <div className={styles.cont_detail_items}>
+            {props.abilities.map((auxAbility) => {
+              return (
+                <div key={auxAbility.ability.name}>
+                  <span>{auxAbility.ability.name}</span>
+                  <br />
+                </div>
+              );
+            })}
+          </div>
+          <h2>Stats</h2>
+          <div  className={styles.cont_detail_base}>
+            {props.stats.map((auxStat) => {
+              return (
+                <section key={Math.random()}>
+                  <h3>{auxStat.stat.name}</h3>
+                  <span>{auxStat.base_stat}</span>
+                </section>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

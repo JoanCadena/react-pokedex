@@ -1,6 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PokeInfo from "../components/PokeInfo";
+import styles from "../css/PokeStyles.module.css";
+import colors from "../css/Colors.module.css";
 
 const Details = (props) => {
   const params = useParams();
@@ -32,20 +34,6 @@ const Details = (props) => {
   if (pokemon) {
     return (
       <>
-        {props.page == "/mylist" ? (
-          <input
-            type="button"
-            value="Eliminar en mi lista"
-            onClick={() => deletePokemon(pokemon)}
-          />
-        ) : (
-          <input
-            type="button"
-            value="Guardar en mi lista"
-            onClick={() => savePokemon(pokemon)}
-          />
-        )}
-        <Link to={props.page}>Volver</Link>
         <PokeInfo
           {...pokemon}
           key={Math.random}
@@ -55,6 +43,26 @@ const Details = (props) => {
               : pokemon.sprites.front_default
           }
         />
+        <div className={styles.cont_button}>
+          {props.page == "/mylist" ? (
+            <input
+              type="button"
+              value="Delete from my list"
+              onClick={() => deletePokemon(pokemon)}
+              className={styles.button_delete}
+            />
+          ) : (
+            <input
+              type="button"
+              value="Save in my list"
+              onClick={() => savePokemon(pokemon)}
+              className={styles.button_add}
+            />
+          )}
+          <Link to={props.page}>
+            <button className={styles.button_back}>Get back</button>
+          </Link>
+        </div>
       </>
     );
   }
