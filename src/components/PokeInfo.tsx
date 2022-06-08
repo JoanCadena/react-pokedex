@@ -1,25 +1,27 @@
-import styles from "../css/PokeStyles.module.css";
-import colors from "../css/Colors.module.css";
+import "../css/PokeStyles.css";
+import "../css/Colors.css";
+import { FC } from "react";
+import { Pokemon } from "../interface/Interface";
 
-const PokeInfo = (props) => {
+const PokeInfo: FC<Pokemon> = (props) => {
   return (
     <>
-      <div className={styles.detail_name}>
+      <div className="detail_name">
         <br />
         <span>{props.name} N.° </span>
         {props.id < 10 ? <span>00{props.id}</span> : <span>0{props.id}</span>}
       </div>
-      <div className={styles.cont_details}>
-        <img src={props.image} alt={props.name} className={styles.cont_image} />
-        <div className={styles.cont_detail_info}>
-          <div className={styles.cont_detail_base}>
+      <div className="cont_details">
+        <img src={props.img} alt={props.name} className="cont_image" />
+        <div className="cont_detail_info">
+          <div className="cont_detail_base">
             <div>
               <h2>Height</h2>
-              <>{props.height / 10}m</>
+              <>{+props.height / 10}m</>
             </div>
             <div>
               <h2>Weight</h2>
-              <>{props.weight / 10}Kg</>
+              <>{+props.weight / 10}Kg</>
             </div>
             <div>
               <h2>Base Experience</h2>
@@ -27,14 +29,12 @@ const PokeInfo = (props) => {
             </div>
           </div>
           <h2>Types</h2>
-          <div className={styles.cont_detail_items}>
+          <div className="cont_detail_items">
             {props.types.map((auxType) => {
               return (
                 <div
                   key={auxType.type.name}
-                  className={
-                    styles.cont_types + " " + colors[auxType.type.name]
-                  }
+                  className={"cont_types " + auxType.type.name}
                 >
                   <span>{auxType.type.name}</span>
                   <br />
@@ -43,7 +43,7 @@ const PokeInfo = (props) => {
             })}
           </div>
           <h2>Abilities</h2>
-          <div className={styles.cont_detail_items}>
+          <div className="cont_detail_items">
             {props.abilities.map((auxAbility) => {
               return (
                 <div key={auxAbility.ability.name}>
@@ -54,7 +54,7 @@ const PokeInfo = (props) => {
             })}
           </div>
           <h2>Stats</h2>
-          <div  className={styles.cont_detail_base}>
+          <div className="cont_detail_base">
             {props.stats.map((auxStat) => {
               return (
                 <section key={Math.random()}>

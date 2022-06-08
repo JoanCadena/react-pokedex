@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent  } from "react";
 import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
-import styles from "../css/PokeStyles.module.css";
+import { Pokemon } from "../interface/Interface";
+import "../css/PokeStyles.css";
 
 const PokeDex = () => {
-  const [listPokemons, setListPokemons] = useState([]);
+  const [listPokemons, setListPokemons] = useState<Pokemon[]>([]);
   const [search, setSearch] = useState("/pokedex/");
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=20"
   );
 
-  const onChangeHandler = (data) => {
+  const onChangeHandler = (data: ChangeEvent<HTMLInputElement>) => {
     setSearch("/pokedex/" + data.target.value);
   };
 
@@ -20,7 +21,7 @@ const PokeDex = () => {
 
     setLoadMore(data.next);
 
-    const createPokemonObject = (results) => {
+    const createPokemonObject = (results: Pokemon[]) => {
       results.forEach(async (pokemon) => {
         const res = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
@@ -40,44 +41,42 @@ const PokeDex = () => {
 
   return (
     <div>
-      <div className={styles.cont_search}>
-        <h2 className={styles.search_title}>
+      <div className="cont_search">
+        <h2 className="search_title">
           You're looking for a specific Pokemon?{" "}
         </h2>
         <input
           id="name"
           placeholder="Name or Number"
-          className={styles.search_input}
+          className="search_input"
           onChange={onChangeHandler}
         />
         <Link to={search}>
           <input
-            className={styles.search_button}
+            className="search_button"
             type="button"
             value="let's go"
           />
         </Link>
       </div>
-      <div className={styles.cont_list}>
+      <div className="cont_list">
         {listPokemons.map((pokemonInfo, index) => (
           <PokeItem
             {...pokemonInfo}
             key={index}
-            image={
-              pokemonInfo.sprites.other.dream_world.front_default != null
+            img={
+              pokemonInfo.sprites.other.dream_world.front_default !== null
                 ? pokemonInfo.sprites.other.dream_world.front_default
                 : pokemonInfo.sprites.front_default
             }
-            type={pokemonInfo.types.map((type) => {
-              return type.type.name;
-            })}
+            types={pokemonInfo.types}
             page="pokedex"
           />
         ))}
       </div>
-      <div className={styles.cont_button}>
+      <div className="cont_button">
         <button
-          className={styles.button_load}
+          className="button_load"
           onClick={() => getListPokemons()}
         >
           Load more...

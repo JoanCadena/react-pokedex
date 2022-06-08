@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
-import styles from "../css/PokeStyles.module.css";
+import { Pokemon } from "../interface/Interface";
+import "../css/PokeStyles.css";
 
 const MyList = () => {
-  const [myListPokemons, setListPokemons] = useState([]);
+  const [myListPokemons, setListPokemons] = useState<Pokemon[]>([]);
 
   const getListPokemons = () => {
     for (const key in localStorage) {
-      if (localStorage.getItem(key) != null) {
+      if (localStorage.getItem(key) !== null) {
         setListPokemons((prevLits) => {
-          return [JSON.parse(localStorage.getItem(key)), ...prevLits];
+          return [JSON.parse(localStorage.getItem(key) || "{}"), ...prevLits];
         });
       }
       myListPokemons.sort((prev, nxt) => prev.id - nxt.id);
@@ -21,21 +22,19 @@ const MyList = () => {
     getListPokemons();
   }, []);
 
-  if (myListPokemons.length != 0) {
+  if (myListPokemons.length !== 0) {
     return (
-      <div className={styles.cont_list}>
+      <div className="cont_list">
         {myListPokemons.map((pokemonInfo, index) => (
           <PokeItem
             {...pokemonInfo}
             key={index}
-            image={
-              pokemonInfo.sprites.other.dream_world.front_default != null
+            img={
+              pokemonInfo.sprites.other.dream_world.front_default !== null
                 ? pokemonInfo.sprites.other.dream_world.front_default
                 : pokemonInfo.sprites.front_default
             }
-            type={pokemonInfo.types.map((type) => {
-              return type.type.name;
-            })}
+            types={pokemonInfo.types}
             page="mylist"
           />
         ))}
@@ -43,10 +42,10 @@ const MyList = () => {
     );
   }
   return (
-    <div className={styles.no_pokemons}>
+    <div className="no_pokemons">
       <h1>No Pokemons found</h1>
       <Link to="/pokedex">
-        <button className={styles.button_load}>See all Pokemons</button>
+        <button className="button_load">See all Pokemons</button>
       </Link>
     </div>
   );

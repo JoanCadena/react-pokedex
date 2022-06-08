@@ -1,12 +1,16 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PokeInfo from "../components/PokeInfo";
-import styles from "../css/PokeStyles.module.css";
-import colors from "../css/Colors.module.css";
+import { Pokemon } from "../interface/Interface";
+import "../css/PokeStyles.css";
 
-const Details = (props) => {
-  const params = useParams();
-  const [pokemon, setPokemon] = useState();
+interface Props {
+  page: string;
+}
+
+const Details = (props : Props) => {
+  const params = useParams<{ pokeId: string }>();
+  const [pokemon, setPokemon] = useState<Pokemon>();
   const url = `https://pokeapi.co/api/v2/pokemon/${params.pokeId}`;
 
   const getPokemon = async () => {
@@ -16,14 +20,14 @@ const Details = (props) => {
     setPokemon(data);
   };
 
-  const savePokemon = (info) => {
+  const savePokemon = (info: Pokemon) => {
     const pokemonInfo = JSON.stringify(info);
-    localStorage.setItem(info.id, pokemonInfo);
+    localStorage.setItem(String(info.id), pokemonInfo);
     alert(info.name + " ha sido correctamente añadido a tu lista");
   };
 
-  const deletePokemon = (info) => {
-    localStorage.removeItem(info.id);
+  const deletePokemon = (info: Pokemon) => {
+    localStorage.removeItem(String(info.id));
     alert(info.name + " se ha eliminado correctamente de tu lista");
   };
 
@@ -36,31 +40,30 @@ const Details = (props) => {
       <>
         <PokeInfo
           {...pokemon}
-          key={Math.random}
-          image={
-            pokemon.sprites.other.dream_world.front_default != null
+          img={
+            pokemon.sprites.other.dream_world.front_default !== null
               ? pokemon.sprites.other.dream_world.front_default
               : pokemon.sprites.front_default
           }
         />
-        <div className={styles.cont_button}>
-          {props.page == "/mylist" ? (
+        <div className="cont_button">          
+          {props.page === "/mylist" ? (
             <input
               type="button"
               value="Delete from my list"
               onClick={() => deletePokemon(pokemon)}
-              className={styles.button_delete}
+              className="button_delete"
             />
           ) : (
             <input
               type="button"
               value="Save in my list"
               onClick={() => savePokemon(pokemon)}
-              className={styles.button_add}
+              className="button_add"
             />
           )}
-          <Link to={props.page}>
-            <button className={styles.button_back}>Get back</button>
+          <Link to={props.page || "/"}>
+            <button className="button_back">Get back</button>
           </Link>
         </div>
       </>
