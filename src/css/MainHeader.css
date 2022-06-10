@@ -32,6 +32,7 @@
 }
 
 .header a:hover,
+.header a:active,
 .header a.active {
   color: lightcyan;
   padding-bottom: 0.25rem;

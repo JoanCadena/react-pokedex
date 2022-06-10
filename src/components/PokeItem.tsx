@@ -1,8 +1,8 @@
+import { FC } from "react";
 import { Link } from "react-router-dom";
+import { Pokemon } from "../interface/Interface";
 import "../css/PokeStyles.css";
 import "../css/Colors.css";
-import { FC } from "react";
-import { Pokemon } from "../interface/Interface";
 
 const PokeItem: FC<Pokemon> = ({ id, img, name, types, page }) => {
   return (

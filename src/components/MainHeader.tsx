@@ -7,12 +7,16 @@ const MainHeader = () => {
       <nav>
         <ul>
           <li>
-            <NavLink activeClassName="active" to="/pokedex">
+            <NavLink className={ (navData) => {
+              return navData.isActive ? "active" : "";
+            }} to="/pokedex">
               PokeDex
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="active" to="/mylist">
+            <NavLink  className={ (navData) => {
+              return navData.isActive ? "active" : "";
+            }} to="/mylist">
               MyList
             </NavLink>
           </li>

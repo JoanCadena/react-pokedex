@@ -1,7 +1,7 @@
-import "../css/PokeStyles.css";
-import "../css/Colors.css";
 import { FC } from "react";
 import { Pokemon } from "../interface/Interface";
+import "../css/Colors.css";
+import "../css/PokeStyles.css";
 
 const PokeInfo: FC<Pokemon> = (props) => {
   return (

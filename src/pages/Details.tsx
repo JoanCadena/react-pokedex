@@ -1,7 +1,7 @@
-import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import PokeInfo from "../components/PokeInfo";
+import { useParams, Link } from "react-router-dom";
 import { Pokemon } from "../interface/Interface";
+import PokeInfo from "../components/PokeInfo";
 import "../css/PokeStyles.css";
 
 interface Props {
