@@ -39,7 +39,7 @@ const MyList = () => {
               page: "mylist",
             }}
           >
-            <PokeItem />
+            <PokeItem key={index} />
           </PokemonData.Provider>
         ))}
       </div>

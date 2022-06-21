@@ -57,7 +57,7 @@ const PokeDex = () => {
         </Link>
       </div>
       <div className="cont_list">
-        {listPokemons.map((pokemonInfo) => (
+        {listPokemons.map((pokemonInfo, index) => (
           <PokemonData.Provider
             value={{
               ...pokemonInfo,
@@ -68,7 +68,7 @@ const PokeDex = () => {
               page: "pokedex",
             }}
           >
-            <PokeItem />
+            <PokeItem key={index} />
           </PokemonData.Provider>
         ))}
       </div>
