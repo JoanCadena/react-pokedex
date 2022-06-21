@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Pokemon } from "../interface/Interface";
 import PokeInfo from "../components/PokeInfo";
+import PokemonData from "../context/pokemon-context";
 import "../css/PokeStyles.css";
 
 interface Props {
@@ -38,14 +39,15 @@ const Details = (props : Props) => {
   if (pokemon) {
     return (
       <>
-        <PokeInfo
-          {...pokemon}
-          img={
-            pokemon.sprites.other.dream_world.front_default !== null
-              ? pokemon.sprites.other.dream_world.front_default
-              : pokemon.sprites.front_default
-          }
-        />
+      <PokemonData.Provider value={{
+        ...pokemon,
+        img: 
+          pokemon.sprites.other.dream_world.front_default !== null
+            ? pokemon.sprites.other.dream_world.front_default
+            : pokemon.sprites.front_default
+      }}>
+        <PokeInfo/>
+        </PokemonData.Provider>
         <div className="cont_button">          
           {props.page === "/mylist" ? (
             <input

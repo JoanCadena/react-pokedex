@@ -1,7 +1,8 @@
-import { useEffect, useState, ChangeEvent  } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
 import { Pokemon } from "../interface/Interface";
+import PokemonData from "../context/pokemon-context";
 import "../css/PokeStyles.css";
 
 const PokeDex = () => {
@@ -52,33 +53,27 @@ const PokeDex = () => {
           onChange={onChangeHandler}
         />
         <Link to={search}>
-          <input
-            className="search_button"
-            type="button"
-            value="let's go"
-          />
+          <input className="search_button" type="button" value="let's go" />
         </Link>
       </div>
       <div className="cont_list">
-        {listPokemons.map((pokemonInfo, index) => (
-          <PokeItem
-            {...pokemonInfo}
-            key={index}
-            img={
-              pokemonInfo.sprites.other.dream_world.front_default !== null
-                ? pokemonInfo.sprites.other.dream_world.front_default
-                : pokemonInfo.sprites.front_default
-            }
-            types={pokemonInfo.types}
-            page="pokedex"
-          />
+        {listPokemons.map((pokemonInfo) => (
+          <PokemonData.Provider
+            value={{
+              ...pokemonInfo,
+              img:
+                pokemonInfo.sprites.other.dream_world.front_default !== null
+                  ? pokemonInfo.sprites.other.dream_world.front_default
+                  : pokemonInfo.sprites.front_default,
+              page: "pokedex",
+            }}
+          >
+            <PokeItem />
+          </PokemonData.Provider>
         ))}
       </div>
       <div className="cont_button">
-        <button
-          className="button_load"
-          onClick={() => getListPokemons()}
-        >
+        <button className="button_load" onClick={() => getListPokemons()}>
           Load more...
         </button>
       </div>

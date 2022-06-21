@@ -5,7 +5,7 @@ export interface Pokedex {
 export interface Pokemon {
   id: number;
   name: string;
-  img: string;
+  img?: string;
   height: string;
   weight: string;
   types: Types[];
@@ -13,6 +13,7 @@ export interface Pokemon {
   abilities: Ability[];
   stats: Stat[];
   page?: string;
+  species?: Species;
   sprites: Sprites;
   weaknesses?: Type[];
   next_evolution?: Evolution[];
@@ -21,8 +22,6 @@ export interface Pokemon {
 
 export interface Ability {
   ability: Species;
-  is_hidden: boolean;
-  slot: number;
 }
 
 export interface Species {

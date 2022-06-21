@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
 import { Pokemon } from "../interface/Interface";
+import PokemonData from "../context/pokemon-context";
 import "../css/PokeStyles.css";
 
 const MyList = () => {
@@ -26,17 +27,20 @@ const MyList = () => {
     return (
       <div className="cont_list">
         {myListPokemons.map((pokemonInfo, index) => (
-          <PokeItem
-            {...pokemonInfo}
-            key={index}
-            img={
-              pokemonInfo.sprites.other.dream_world.front_default !== null
-                ? pokemonInfo.sprites.other.dream_world.front_default
-                : pokemonInfo.sprites.front_default
-            }
-            types={pokemonInfo.types}
-            page="mylist"
-          />
+          <PokemonData.Provider
+            value={{
+              ...pokemonInfo,
+              img:
+                pokemonInfo.sprites.other.dream_world.front_default !== null
+                  ? pokemonInfo.sprites.other.dream_world.front_default
+                  : pokemonInfo.sprites.front_default,
+
+              types: pokemonInfo.types,
+              page: "mylist",
+            }}
+          >
+            <PokeItem />
+          </PokemonData.Provider>
         ))}
       </div>
     );
