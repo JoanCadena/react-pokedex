@@ -3,15 +3,20 @@ import { Link } from "react-router-dom";
 import { Pokemon } from "../interface/Interface";
 import "../css/PokeStyles.css";
 import "../css/Colors.css";
+import { useDispatch } from "react-redux";
+import fetchPokemon from "../redux/actions/buscador";
 
 const PokeItem: FC<Pokemon> = ({ id, img, name, types, page }) => {
+  const dispatch = useDispatch<any>()
   return (
     <Link
       to={`/${page}/${id}`}
       className="cont_link"
       style={{ textDecoration: "none" }}
     >
-      <div key={id} className="cont_item">
+      <div key={id} className="cont_item" onClick={() => {
+        dispatch(fetchPokemon(name))
+      }}>
         <img src={img} alt={name} className="cont_img" />
         <div className="cont_number">
           {id < 10 ? <small>N.°00{id}</small> : <small>N.°0{id}</small>}

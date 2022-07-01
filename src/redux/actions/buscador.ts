@@ -36,7 +36,7 @@ const fetchPokemon = (info: String | Number) => {
   return (dispatch: AppDispatch) => {
     dispatch(fetchPokemonRequest());
     Axios.get(`https://pokeapi.co/api/v2/pokemon/${info}`)
-      .then((res) => {
+      .then((res) => {        
         dispatch(fetchPokemonSuccess([res.data]));
       })
       .catch((err) => {

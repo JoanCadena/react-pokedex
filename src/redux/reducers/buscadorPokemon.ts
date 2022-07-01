@@ -2,8 +2,9 @@ import {
   FETCH_POKEMON_FAILURE,
   FETCH_POKEMON_SUCCESS,
   FETCH_POKEMON_REQUEST,
-} from "../actions/buscador_pokemon";
+} from "../actions/buscador";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { Pokemon } from "../../interface/Interface";
 
 const initialState = {
   loading: false,
@@ -15,15 +16,13 @@ interface Error {
   mensaje: String;
 }
 
-const buscadorPokemon = (
-  state = initialState,
-  action: PayloadAction<any>
-) => {
+const buscadorPokemon = (state = initialState, action: PayloadAction<Error | null>) => {
   switch (action.type) {
     case FETCH_POKEMON_REQUEST:
       return {
-        ...state,
         loading: true,
+        pokemon: [],
+        error: "",
       };
     case FETCH_POKEMON_SUCCESS:
       return {

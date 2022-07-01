@@ -2,6 +2,7 @@ import rootReducers from "./reducers/rootReducers";
 import { applyMiddleware, legacy_createStore as createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import { Dispatch } from "react";
 
 const store = createStore(
   rootReducers,

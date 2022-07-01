@@ -2,18 +2,17 @@ import { useEffect, useState, ChangeEvent  } from "react";
 import { Link } from "react-router-dom";
 import PokeItem from "../components/PokeItem";
 import { Pokemon } from "../interface/Interface";
+import {useDispatch} from 'react-redux'
 import "../css/PokeStyles.css";
+import fetchPokemon from "../redux/actions/buscador";
 
 const PokeDex = () => {
+  const dispatch = useDispatch<any>()
   const [listPokemons, setListPokemons] = useState<Pokemon[]>([]);
   const [search, setSearch] = useState("/pokedex/");
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=20"
   );
-
-  const onChangeHandler = (data: ChangeEvent<HTMLInputElement>) => {
-    setSearch("/pokedex/" + data.target.value);
-  };
 
   const getListPokemons = async () => {
     const res = await fetch(loadMore);
@@ -49,13 +48,18 @@ const PokeDex = () => {
           id="name"
           placeholder="Name or Number"
           className="search_input"
-          onChange={onChangeHandler}
+          onChange={ (event) => {
+            setSearch(event.target.value)
+          }}
         />
-        <Link to={search}>
+        <Link to={"/pokedex/" + search}>
           <input
             className="search_button"
             type="button"
             value="let's go"
+            onClick={ () => {
+              dispatch(fetchPokemon(search))
+            }}
           />
         </Link>
       </div>
