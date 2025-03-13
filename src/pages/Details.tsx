@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router";
+import { useParams } from "react-router";
 import { IPokemon } from "../interfaces/pokemon";
 import PokeInfo from "../components/PokeInfo";
 import styles from "../styles/details.module.scss";
