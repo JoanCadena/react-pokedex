@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+# React Pokedex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es una aplicación interactiva que permite a los usuarios explorar una lista completa de Pokémon, en la que pueden buscar y conocer detalles sobre cada Pokémon, como su nombre, tipo, habilidades, estadísticas, etc. La app ofrece una interfaz fácil de usar y permite acceder rápidamente a información relevante para cada Pokémon, convirtiéndola en una herramienta útil tanto para fanáticos como para jugadores del universo Pokémon.
 
-Currently, two official plugins are available:
+Este proyecto está construido con React, TypeScript, Sass y Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tecnologías
 
-## Expanding the ESLint configuration
+- React: Biblioteca para construir interfaces de usuario.
+- TypeScript: Superset de JavaScript que añade tipado estático.
+- Sass: Preprocesador CSS que extiende las funcionalidades del CSS.
+- Vite: Herramienta de construcción y desarrollo rápido para proyectos frontend.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Requisitos previos
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Antes de comenzar, asegúrate de tener instaladas las siguientes herramientas:
+
+- Node.js (v18 o superior)
+- pnpm para gestionar las dependencias.
+
+## Instalación
+
+Sigue estos pasos para configurar el proyecto en tu máquina local:
+
+1. Clona el repositorio:
+
+```bash
+   git clone https://github.com/JoanCadena/react-pokedex
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Navega a la carpeta del proyecto:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+   cd react-pokedex
 ```
+
+3. Instala las dependencias utilizando pnpm:
+
+```bash
+ pnpm install
+```
+
+## Ejecución en modo de desarrollo
+
+Para iniciar el servidor de desarrollo y ver la aplicación en tu navegador, ejecuta:
+
+```bash
+pnpm run dev
+```
+
+Esto abrirá la aplicación en tu navegador en http://localhost:5173.
+
+Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+
+Contacto
+
+Para cualquier consulta, puedes ponerte en contacto a través de tu [correo electrónico](mailto:joancadenapaternina@outlook.com).
