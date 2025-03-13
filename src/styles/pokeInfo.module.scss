@@ -1,0 +1,151 @@
+.pokemonNameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 32rem;
+  height: 48px;
+  margin: 0 auto;
+  color: white;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.pokemonName {
+  font-size: 28px;
+  font-weight: 700;
+  margin-left: 1rem;
+  margin-right: auto;
+}
+
+.pokemonNumber {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.pokemonDetails {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 1rem;
+  margin: 12rem auto 1rem auto;
+  max-width: 48rem;
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+}
+
+.pokemonImage {
+  position: absolute;
+  top: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 224px;
+  max-width: 320px;
+}
+
+.pokemonInfo {
+  width: 100%;
+  height: 100%;
+  padding: 4.25rem 1rem 1rem;
+  color: black;
+}
+
+.pokemonTypesContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.75rem;
+}
+
+.pokemonTypes {
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  border-radius: 100vmax;
+  min-width: 5rem;
+}
+
+.subtitle {
+  display: flex;
+  font-size: 24px;
+  font-weight: 700;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.pokemonStatsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 1rem;
+  @media (max-width: 640px) {
+    justify-content: space-between;
+  }
+}
+
+.pokemonStat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  margin: 1rem 0;
+  border-radius: 100vmax;
+  min-width: 6rem;
+}
+
+.pokemonStatDescription {
+  margin-top: 0.5rem;
+  font-weight: 300;
+}
+
+.statIcon {
+  padding-right: 0.5rem;
+}
+
+.separator {
+  height: 4rem;
+  background-color: lightgrey;
+  width: 1px;
+}
+
+.pokemonAbilities {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  flex-direction: column;
+}
+
+.pokemonBaseStatsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemonBaseStat {
+  display: flex;
+  align-items: center;
+}
+
+.baseStatName {
+  min-width: 4rem;
+  text-align: end;
+}
+
+.baseStatValue {
+  width: 100%;
+  height: 0.5rem;
+  background-color: lightgray;
+  border-radius: 100vmax;
+}
+
+.smallSeparator {
+  background-color: lightgrey;
+  width: 1px;
+  height: 1.8rem;
+  margin: 0 0.75rem;
+}

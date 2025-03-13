@@ -1,19 +1,14 @@
-import { useEffect, useState, ChangeEvent  } from "react";
-import { Link } from "react-router-dom";
-import PokeItem from "../components/PokeItem";
-import { Pokemon } from "../interface/Interface";
-import "../css/PokeStyles.css";
+import { useEffect, useState } from "react";
+import { IPokemon } from "../interfaces/pokemon";
+import PokeCard from "../components/PokeCard";
+import Search from "../components/Search";
+import styles from "../styles/pokedex.module.scss";
 
 const PokeDex = () => {
-  const [listPokemons, setListPokemons] = useState<Pokemon[]>([]);
-  const [search, setSearch] = useState("/pokedex/");
+  const [listPokemons, setListPokemons] = useState<IPokemon[]>([]);
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=20"
   );
-
-  const onChangeHandler = (data: ChangeEvent<HTMLInputElement>) => {
-    setSearch("/pokedex/" + data.target.value);
-  };
 
   const getListPokemons = async () => {
     const res = await fetch(loadMore);
@@ -21,7 +16,7 @@ const PokeDex = () => {
 
     setLoadMore(data.next);
 
-    const createPokemonObject = (results: Pokemon[]) => {
+    const createPokemonObject = (results: IPokemon[]) => {
       results.forEach(async (pokemon) => {
         const res = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
@@ -40,28 +35,11 @@ const PokeDex = () => {
   }, []);
 
   return (
-    <div>
-      <div className="cont_search">
-        <h2 className="search_title">
-          You're looking for a specific Pokemon?{" "}
-        </h2>
-        <input
-          id="name"
-          placeholder="Name or Number"
-          className="search_input"
-          onChange={onChangeHandler}
-        />
-        <Link to={search}>
-          <input
-            className="search_button"
-            type="button"
-            value="let's go"
-          />
-        </Link>
-      </div>
-      <div className="cont_list">
+    <div className={styles.pageContainer}>
+      <Search />
+      <section className={styles.listContainer}>
         {listPokemons.map((pokemonInfo, index) => (
-          <PokeItem
+          <PokeCard
             {...pokemonInfo}
             key={index}
             img={
@@ -73,15 +51,13 @@ const PokeDex = () => {
             page="pokedex"
           />
         ))}
-      </div>
-      <div className="cont_button">
-        <button
-          className="button_load"
-          onClick={() => getListPokemons()}
-        >
+      </section>
+      {/* Update to add infinite scroll */}
+      <section className={styles.buttonContainer}>
+        <button className={styles.button} onClick={() => getListPokemons()}>
           Load more...
         </button>
-      </div>
+      </section>
     </div>
   );
 };

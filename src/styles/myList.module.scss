@@ -1,0 +1,49 @@
+.pageContainer {
+  background-color: rgb(205, 45, 45);
+  padding: 2rem 0;
+  min-height: 100dvh;
+}
+
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 1rem;
+  max-width: 90%;
+  place-self: center;
+
+  @media (max-width: 390px) {
+    padding: 0.5rem;
+  }
+}
+
+.noPokemons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 1rem;
+  width: 90%;
+  place-self: center;
+
+  @media (max-width: 390px) {
+    padding: 0.5rem;
+  }
+}
+
+.backButton {
+  background-color: rgb(205, 45, 45);
+  color: white;
+  max-width: fit-content;
+  height: 3rem;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 1rem !important;
+}

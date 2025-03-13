@@ -1,0 +1,289 @@
+/* .normal {
+  background-color: #c7c7b7;
+  color: black;
+}
+
+.fire {
+  background-color: #e50020;
+  color: white;
+}
+
+.water {
+  background-color: #1552e2;
+  color: white;
+}
+
+.grass {
+  background-color: #27cb4f;
+  color: black;
+}
+
+.electric {
+  background-color: #ffe100;
+  color: black;
+}
+
+.ice {
+  background-color: #86d2f5;
+  color: black;
+}
+
+.fighting {
+  background-color: #ef6137;
+  color: black;
+}
+
+.poison {
+  background-color: #5e2d88;
+  color: white;
+}
+
+.ground {
+  background-color: #a76e2b;
+  color: white;
+}
+
+.flying {
+  background-color: #93b2c7;
+  color: black;
+}
+
+.psychic {
+  background-color: #f71c90;
+  color: white;
+}
+
+.bug {
+  background-color: #1c4b27;
+  color: white;
+}
+
+.rock {
+  background-color: #48180b;
+  color: white;
+}
+
+.ghost {
+  background-color: #906790;
+  color: white;
+}
+
+.dark {
+  background-color: #040706;
+  color: white;
+}
+
+.dragon {
+  background-color: #448b95;
+  color: white;
+}
+
+.steel {
+  background-color: #5f756d;
+  color: white;
+}
+
+.fairy {
+  background-color: #971944;
+  color: white;
+} */
+
+/* New Colors */
+
+.normal {
+  background-color: #aaa67f;
+  color: black;
+}
+.bgColorHover_normal:hover {
+  background-color: rgb(170, 166, 127, 0.2) !important;
+}
+.color_normal {
+  color: #aaa67f;
+}
+
+.fire {
+  background-color: #f57d31;
+  color: white;
+}
+.bgColorHover_fire:hover {
+  background-color: rgb(245, 125, 49, 0.2) !important;
+}
+.color_fire {
+  color: #f57d31;
+}
+
+.water {
+  background-color: #6493eb;
+  color: white;
+}
+.bgColorHover_water:hover {
+  background-color: rgb(100, 147, 235, 0.2) !important;
+}
+.color_water {
+  color: #6493eb;
+}
+
+.grass {
+  background-color: #74cb48;
+  color: black;
+}
+.bgColorHover_grass:hover {
+  background-color: rgb(116, 204, 71, 0.2) !important;
+}
+.color_grass {
+  color: #74cb48;
+}
+
+.electric {
+  background-color: #f9cf30;
+  color: black;
+}
+.bgColorHover_electric:hover {
+  background-color: rgb(249, 207, 48, 0.2) !important;
+}
+.color_electric {
+  color: #f9cf30;
+}
+
+.ice {
+  background-color: #9ad6df;
+  color: black;
+}
+.bgColorHover_ice:hover {
+  background-color: rgb(154, 214, 223, 0.2) !important;
+}
+.color_ice {
+  color: #9ad6df;
+}
+
+.fighting {
+  background-color: #c12239;
+  color: black;
+}
+.bgColorHover_fighting:hover {
+  background-color: rgb(193, 34, 57, 0.2) !important;
+}
+.color_fighting {
+  color: #c12239;
+}
+
+.poison {
+  background-color: #a43e9e;
+  color: white;
+}
+.bgColorHover_poison:hover {
+  background-color: rgb(164, 62, 158, 0.2) !important;
+}
+.color_poison {
+  color: #a43e9e;
+}
+
+.ground {
+  background-color: #dec16b;
+  color: white;
+}
+.bgColorHover_ground:hover {
+  background-color: rgb(222, 193, 107, 0.2) !important;
+}
+.color_ground {
+  color: #dec16b;
+}
+
+.flying {
+  background-color: #a891ec;
+  color: black;
+}
+.bgColorHover_flying:hover {
+  background-color: rgb(168, 145, 236, 0.2) !important;
+}
+.color_flying {
+  color: #a891ec;
+}
+
+.psychic {
+  background-color: #fb5584;
+  color: white;
+}
+.bgColorHover_psychic:hover {
+  background-color: rgb(251, 85, 132, 0.2) !important;
+}
+.color_psychic {
+  color: #fb5584;
+}
+
+.bug {
+  background-color: #a7b723;
+  color: white;
+}
+.bgColorHover_bug:hover {
+  background-color: rgb(167, 183, 35, 0.2) !important;
+}
+.color_bug {
+  color: #a7b723;
+}
+
+.rock {
+  background-color: #b69e31;
+  color: white;
+}
+.bgColorHover_rock:hover {
+  background-color: rgb(182, 158, 49, 0.2) !important;
+}
+.color_rock {
+  color: #b69e31;
+}
+
+.ghost {
+  background-color: #70559b;
+  color: white;
+}
+.bgColorHover_ghost:hover {
+  background-color: rgb(112, 85, 155, 0.2) !important;
+}
+.color_ghost {
+  color: #70559b;
+}
+
+.dark {
+  background-color: #75574c;
+  color: white;
+}
+.bgColorHover_dark:hover {
+  background-color: rgb(117, 87, 76, 0.2) !important;
+}
+.color_dark {
+  color: #75574c;
+}
+
+.dragon {
+  background-color: #7037ff;
+  color: white;
+}
+.bgColorHover_dragon:hover {
+  background-color: rgb(112, 55, 255, 0.2) !important;
+}
+.color_dragon {
+  color: #7037ff;
+}
+
+.steel {
+  background-color: #b7b9d0;
+  color: white;
+}
+.bgColorHover_steel:hover {
+  background-color: rgb(183, 185, 208, 0.2) !important;
+}
+.color_steel {
+  color: #b7b9d0;
+}
+
+.fairy {
+  background-color: #e69eac;
+  color: white;
+}
+.bgColorHover_fairy:hover {
+  background-color: rgb(230, 158, 172, 0.2) !important;
+}
+.color_fairy {
+  color: #e69eac;
+}

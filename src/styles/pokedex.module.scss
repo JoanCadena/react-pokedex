@@ -1,0 +1,40 @@
+.pageContainer {
+  background-color: rgb(205, 45, 45);
+  padding: 2rem 0;
+  min-height: 100dvh;
+}
+
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 1rem;
+  max-width: 90%;
+  place-self: center;
+
+  @media (max-width: 390px) {
+    padding: 0.5rem;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.button {
+  background: white;
+  color: rgb(205, 45, 45);
+  border: 1px solid lightskyblue;
+  max-width: fit-content;
+  height: 3rem;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 1rem;
+}

@@ -1,0 +1,40 @@
+.searchContainer {
+  display: flex;
+  border-radius: 30px;
+  padding: 0.25rem;
+  width: 90%;
+  max-width: 32rem;
+  margin: 0 0 1.5rem 0;
+  place-self: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  color: black;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+}
+
+.searchIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchIcon {
+  padding: 0.25rem;
+  padding-right: 0.5rem;
+}
