@@ -1,8 +1,13 @@
 {
   "name": "react-pokedex-v2",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": {
+    "name": "Joan Cadena Paternina",
+    "email": "joancadenapaternina@outlook.com"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -10,10 +15,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@redux-devtools/extension": "3.3.0",
+    "@reduxjs/toolkit": "2.6.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "9.2.0",
     "react-router": "7.3.0",
-    "sass": "^1.85.1"
+    "redux-thunk": "3.1.0",
+    "sass": "~1.85.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
