@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { IPokemon } from "../interfaces/pokemon";
 import styles from "../styles/pokeInfo.module.scss";
 import "../styles/colors.css";

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import styles from "../styles/search.module.scss";
 import SearchIcon from "../assets/search.svg";
