@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { IPokemon } from "../interfaces/pokemon";
 import styles from "../styles/pokeInfo.module.scss";
 import "../styles/colors.css";
@@ -8,10 +8,39 @@ import HeightIcon from "../assets/height.svg";
 import WeightIcon from "../assets/weight.svg";
 import PokeBallBlackIcon from "../assets/pokeball_black.svg";
 import { BaseStats } from "../utils/enums";
+import { Toaster, toast } from "sonner";
 
-const PokeInfo: FC<IPokemon> = (props) => {
+interface IProps {
+  pokemon: IPokemon;
+  img: string;
+  page: string;
+}
+
+const PokeInfo: FC<IProps> = (props) => {
+  const pokemonInfo = props.pokemon;
+  const [isSavedInLocalstorage, setIsSavedInLocalStorage] = useState<Boolean>(
+    !!localStorage.getItem(pokemonInfo.id.toString())
+  );
+  const savePokemon = () => {
+    localStorage.setItem(String(pokemonInfo.id), JSON.stringify(pokemonInfo));
+    setIsSavedInLocalStorage(true);
+    toast(
+      pokemonInfo.name.toUpperCase() + " has been added to your Pokemon list"
+    );
+  };
+
+  const deletePokemon = () => {
+    localStorage.removeItem(String(pokemonInfo.id));
+    setIsSavedInLocalStorage(false);
+    toast(
+      pokemonInfo.name.toUpperCase() +
+        " has been removed from your Pokemon list"
+    );
+  };
+
   return (
     <>
+      <Toaster />
       <section className={styles.pokemonNameContainer}>
         <Link
           to={props.page || "/"}
@@ -19,16 +48,20 @@ const PokeInfo: FC<IPokemon> = (props) => {
         >
           <img src={BackIcon} alt="search icon" />
         </Link>
-        <span className={styles.pokemonName}>{props.name}</span>
+        <span className={styles.pokemonName}>{pokemonInfo.name}</span>
         <span className={styles.pokemonNumber}>
-          #{props.id.toString().padStart(3, "0")}
+          #{pokemonInfo.id.toString().padStart(3, "0")}
         </span>
       </section>
       <section className={styles.pokemonDetails}>
-        <img src={props.img} alt={props.name} className={styles.pokemonImage} />
+        <img
+          src={props.img}
+          alt={pokemonInfo.name}
+          className={styles.pokemonImage}
+        />
         <section className={styles.pokemonInfo}>
           <div className={styles.pokemonTypesContainer}>
-            {props.types.map((auxType) => {
+            {pokemonInfo.types.map((auxType) => {
               return (
                 <div
                   key={auxType.type.name}
@@ -41,7 +74,7 @@ const PokeInfo: FC<IPokemon> = (props) => {
             })}
           </div>
           <span
-            className={`${styles.subtitle} color_${props.types[0].type.name}`}
+            className={`${styles.subtitle} color_${pokemonInfo.types[0].type.name}`}
           >
             About
           </span>
@@ -53,7 +86,7 @@ const PokeInfo: FC<IPokemon> = (props) => {
                   alt="Weight icon"
                   className={styles.statIcon}
                 />
-                {props.weight / 10} kg
+                {pokemonInfo.weight / 10} kg
               </div>
               <small className={styles.pokemonStatDescription}>Weight</small>
             </span>
@@ -65,7 +98,7 @@ const PokeInfo: FC<IPokemon> = (props) => {
                   alt="Height icon"
                   className={styles.statIcon}
                 />
-                {props.height / 10} m
+                {pokemonInfo.height / 10} m
               </div>
               <small className={styles.pokemonStatDescription}>Height</small>
             </span>
@@ -78,18 +111,18 @@ const PokeInfo: FC<IPokemon> = (props) => {
                   className={styles.statIcon}
                   height={16}
                 />
-                {props.base_experience}
+                {pokemonInfo.base_experience}
               </div>
               <small className={styles.pokemonStatDescription}>Base XP</small>
             </span>
           </div>
           <span
-            className={`${styles.subtitle} color_${props.types[0].type.name}`}
+            className={`${styles.subtitle} color_${pokemonInfo.types[0].type.name}`}
           >
             Abilities
           </span>
           <div className={styles.pokemonAbilities}>
-            {props.abilities.map((auxAbility) => {
+            {pokemonInfo.abilities.map((auxAbility) => {
               return (
                 <div key={auxAbility.ability.name}>
                   <span>{auxAbility.ability.name}</span>
@@ -98,16 +131,16 @@ const PokeInfo: FC<IPokemon> = (props) => {
             })}
           </div>
           <span
-            className={`${styles.subtitle} color_${props.types[0].type.name}`}
+            className={`${styles.subtitle} color_${pokemonInfo.types[0].type.name}`}
           >
             Base Stats
           </span>
           <div className={styles.pokemonBaseStatsContainer}>
-            {props.stats.map((auxStat) => {
+            {pokemonInfo.stats.map((auxStat) => {
               return (
                 <div key={auxStat.stat.name} className={styles.pokemonBaseStat}>
                   <h3
-                    className={`${styles.baseStatName} color_${props.types[0].type.name}`}
+                    className={`${styles.baseStatName} color_${pokemonInfo.types[0].type.name}`}
                   >
                     {BaseStats[auxStat.stat.name as keyof typeof BaseStats]}
                   </h3>
@@ -117,7 +150,7 @@ const PokeInfo: FC<IPokemon> = (props) => {
                   </span>
                   <span className={styles.baseStatValue}>
                     <span
-                      className={props.types[0].type.name}
+                      className={pokemonInfo.types[0].type.name}
                       style={{
                         display: "flex",
                         height: "0.5rem",
@@ -130,6 +163,23 @@ const PokeInfo: FC<IPokemon> = (props) => {
               );
             })}
           </div>
+          <section className={styles.buttonContainer}>
+            {isSavedInLocalstorage ? (
+              <button
+                onClick={() => deletePokemon()}
+                className={`${styles.button} ${styles.delete}`}
+              >
+                Remove from my list
+              </button>
+            ) : (
+              <button
+                onClick={() => savePokemon()}
+                className={`${styles.button} ${styles.save}`}
+              >
+                Save in my list
+              </button>
+            )}
+          </section>
         </section>
       </section>
     </>

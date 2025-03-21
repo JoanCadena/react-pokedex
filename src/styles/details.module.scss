@@ -1,8 +1,28 @@
 .infoContainer {
-  padding: 2rem 0;
+  padding-top: 2rem;
   min-height: 100dvh;
   min-width: 100dvw;
   place-self: center;
+}
+
+.pageContainer {
+  background-color: rgb(205, 45, 45);
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 1rem;
+  width: 90%;
+  place-self: center;
+
+  @media (max-width: 390px) {
+    padding: 0.5rem;
+  }
 }
 
 .buttonContainer {
@@ -22,6 +42,12 @@
   cursor: pointer;
   font-size: 20px;
   padding: 0 1rem;
+}
+
+.backButton {
+  background-color: rgb(205, 45, 45);
+  color: white;
+  margin-top: 1rem !important;
 }
 
 .pokedexImage {

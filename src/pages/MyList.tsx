@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import PokeItem from "../components/PokeCard";
 import { IPokemon } from "../interfaces/pokemon";
 import styles from "../styles/myList.module.scss";
-import Search from "../components/Search";
+import SearchBar from "../components/SearchBar";
 
 const MyList = () => {
   const [myListPokemons, setListPokemons] = useState<IPokemon[]>([]);
@@ -25,7 +25,7 @@ const MyList = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <Search />
+      <SearchBar />
       {myListPokemons.length ? (
         <div className={styles.listContainer}>
           {myListPokemons.map((pokemonInfo, index) => (

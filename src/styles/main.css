@@ -43,5 +43,5 @@ a:focus,
 a:focus-visible,
 button:focus,
 button:focus-visible {
-  outline: 2px auto rgb(205, 45, 45);
+  outline: 2px auto rgb(205, 45, 45, 0.5);
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { IPokemon } from "../interfaces/pokemon";
 import PokeCard from "../components/PokeCard";
-import Search from "../components/Search";
+import SearchBar from "../components/SearchBar";
 import styles from "../styles/pokedex.module.scss";
 
 const PokeDex = () => {
@@ -36,7 +36,7 @@ const PokeDex = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <Search />
+      <SearchBar />
       <section className={styles.listContainer}>
         {listPokemons.map((pokemonInfo, index) => (
           <PokeCard

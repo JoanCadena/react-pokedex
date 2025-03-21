@@ -29,8 +29,8 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  border-radius: 1rem;
-  margin: 12rem auto 1rem auto;
+  border-radius: 1rem 1rem 0 0;
+  margin: 12rem auto 0 auto;
   max-width: 48rem;
   @media (max-width: 640px) {
     width: 100%;
@@ -148,4 +148,30 @@
   width: 1px;
   height: 1.8rem;
   margin: 0 0.75rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.button {
+  color: white;
+  max-width: fit-content;
+  height: 3rem;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 1rem;
+
+  &.delete {
+    background-color: rgb(205, 45, 45);
+  }
+
+  &.save {
+    background-color: rgb(116, 203, 72);
+  }
 }

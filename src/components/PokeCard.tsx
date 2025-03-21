@@ -5,6 +5,8 @@ import styles from "../styles/pokeCard.module.scss";
 import "../styles/colors.css";
 import HeightIcon from "../assets/height.svg";
 import WeightIcon from "../assets/weight.svg";
+import fetchPokemon from "../redux/actions/search";
+import { useAppDispatch } from "../redux/store";
 
 const PokeCard: FC<IPokemon> = ({
   id,
@@ -15,11 +17,13 @@ const PokeCard: FC<IPokemon> = ({
   weight,
   page,
 }) => {
+  const dispatch = useAppDispatch();
   return (
     <Link to={`/${page}/${id}`} className={styles.cardContainer}>
       <div
         key={id}
         className={`${styles.pokemonCard} bgColorHover_${types[0].type.name}`}
+        onClick={() => dispatch(fetchPokemon(name))}
       >
         <span className={styles.pokemonBackId}>
           #{id.toString().padStart(3, "0")}
