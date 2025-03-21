@@ -6,12 +6,10 @@ import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const App = () => {
   return (
     <Provider store={store}>
-      <SpeedInsights />
       <Layout>
         <Routes>
           <Route path="/" element={<Navigate replace to="/pokedex" />} />
